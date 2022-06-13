@@ -206,49 +206,6 @@
 
 &nbsp;
 
-# Tables
+# ERR Diagram
 
-&nbsp;
-
-# Tables
-
-        ## Users
-                ### Fields:
-                        #### UserId primary key auto incrementing
-                        #### Username varchar255
-                        #### Password stored as hash
-                        #### Admin boolean
-                        #### Created_at datetime
-                        #### Updated_at datetime
-                        #### Deleted_at datetime
-
-
-
-        # Todos
-                ### Fields:
-                        #### UserId foreign key to Users
-                        #### Category? Todo or In Process or Complete
-                        #### Username varchar255
-                        #### Description varchar255
-                        #### Date varchar255
-                        #### Time varchar255
-                        #### Complete boolean
-                        #### CompleteDate varchar255
-                        #### CompleteTime varchar255
-
-
-         # User Metrics
-                ### Fields:
-                        #### UserId Primary Key foreign key to Users
-                        #### Username
-                        #### TodosCompleted int
-                        #### TodosInProcess int
-                        #### TodosUncompleted int
-                        #### TodosCreated int
-                        #### TodosDeleted int
-                        #### TodosUpdated int
-                        #### TodosCompletedDate int
-                        #### TodosCompletedTime int
-                        #### average number of todos completed per day
-                        #### average number of todos completed per week
-                        #### average number of todos completed per month
+!['Err Diagram'](./err_diagram.png)
