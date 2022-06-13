@@ -52,6 +52,12 @@
 
 &nbsp;
 
+## Admin Level User
+
+---
+
+&nbsp;
+
 > ## As a admin of the CLI App it would be nice if I could easily look at a user's account and see all of their information printed to the console in a way that is informative and useful to seeing what the user is doing and has been doing recently.
 
 &nbsp;
