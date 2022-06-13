@@ -1,8 +1,8 @@
-# Revature_Project_0 Jay Womack
+# Revature Project Zero - Jay Womack
 
 &nbsp;
 
-# Python | MySQL | CLI To-Do App
+# Python&nbsp; | &nbsp; MySQL&nbsp; | &nbsp;CLI To-Do App
 
 ## **Description:** A classic To-Do application that allows users to create an account and create todos that are stored, completed and tabulated for viewing later.
 
@@ -60,11 +60,11 @@
 
 &nbsp;
 
-## Users can log in on the command line as a user or as an admin.
+# Users can log in on the command line as a user or as an admin.
 
 &nbsp;
 
-## For a user the current options are:
+# For a user the current options are:
 
 &nbsp;
 
@@ -122,7 +122,11 @@
 
 &nbsp;
 
-### If the user is an admin the current options are:
+## If the user is an admin the current options are:
+
+---
+
+&nbsp;
 
 > ## view all the todos by a specific user
 
@@ -154,7 +158,7 @@
 
 &nbsp;
 
-# Tech Stack
+# Tech Stack:
 
 > ## Python 3.9.13
 
