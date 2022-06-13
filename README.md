@@ -122,9 +122,7 @@
 
 &nbsp;
 
-## If the user is an admin the current options are:
-
----
+# If the user is an admin the current options are:
 
 &nbsp;
 
@@ -191,6 +189,16 @@
 > ## Dotenv for hiding variables
 
 ---
+
+# Project Management:
+
+> ## Jira
+
+> ## Agile
+
+> ## Kanban
+
+&nbsp;
 
 # Tables
 
