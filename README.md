@@ -210,9 +210,11 @@
 
 &nbsp;
 
+# Tables
+
         ## Users
                 ### Fields:
-                        #### Id primary key auto incrementing
+                        #### UserId primary key auto incrementing
                         #### Username varchar255
                         #### Password stored as hash
                         #### Admin boolean
@@ -224,12 +226,29 @@
 
         # Todos
                 ### Fields:
-                        #### Id
+                        #### UserId foreign key to Users
                         #### Category? Todo or In Process or Complete
-                        #### Username foreign key to users table
+                        #### Username varchar255
                         #### Description varchar255
                         #### Date varchar255
                         #### Time varchar255
                         #### Complete boolean
                         #### CompleteDate varchar255
                         #### CompleteTime varchar255
+
+
+         # User Metrics
+                ### Fields:
+                        #### UserId Primary Key foreign key to Users
+                        #### Username
+                        #### TodosCompleted int
+                        #### TodosInProcess int
+                        #### TodosUncompleted int
+                        #### TodosCreated int
+                        #### TodosDeleted int
+                        #### TodosUpdated int
+                        #### TodosCompletedDate int
+                        #### TodosCompletedTime int
+                        #### average number of todos completed per day
+                        #### average number of todos completed per week
+                        #### average number of todos completed per month
