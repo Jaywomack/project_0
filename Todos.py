@@ -2,31 +2,30 @@ from User import User
 
 class Todos(User):
         '''Todo Class - inherits from Connection => User => Todo'''
-        
 
         #  Get all todos, completed, in progress and todos
         def get_todos_all(self):
-                pass
+                print("Get all todos, completed, in progress and todos")
                 
         # view all the uncompleted todos
         def get_todos_uncompleted(self):
-                pass
+                print("view all the uncompleted todos")
 
         # view all the completed todos
         def get_todos_completed(self):
-                pass
+                print("view all the completed todos")
         # view all the uncompleted todos to a certain date
         def get_todos_by_range(self):
-                pass        
+                print("view all the uncompleted todos to a certain date")        
         # mark a todo as complete
         def mark_todo(self):
-                pass
+                print("Mark a todo as complete")
         # Lookup todo by name and edit/delete a todo
         def get_todo(self):
-                pass        
+                print("Lookup todo by name and edit/delete a todo")
         # Export todos to 
         def export_todos(self):
-                pass
+                print("Export todos to a file")
 
         # Admin only methods
         # todos completed in a time range

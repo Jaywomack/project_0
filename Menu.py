@@ -1,15 +1,22 @@
 from Todos import Todos 
+from rich.console import Console
 
 class Menu(Todos):
         '''Menu Class - inherits from Connection => User => Todo => Menu'''
         # From the menu the user can:
-        
+        global console 
+        console = Console()
+
                 
         
         # Login Menu
         def login_menu(self):
                 # Welcome prompt
-
+                console.print("I like :beer: and [bold white on blue]Deportivo [bold blue on white]de\
+                la[/bold blue on white] Coruña")
+                console.print("Visit our Medium publication from [blue underline]https://medium.com/trabe")
+                console.print("Also we can style the entire line", style="bold yellow on #bd0f0f")
+                console.print(locals())
                 # Login prompt
 
                 # If the user is an admin, they can see the admin login menu
