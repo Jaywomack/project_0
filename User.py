@@ -1,12 +1,11 @@
-import Connection, Todos
+from Connection import Connection
 
 class User(Connection):
-        '''User class'''        
-        def __init__(self):
-                pass
+        '''User Class - inherits from Connection => User'''        
+        def create_user(self):
+                print("Creating a new user from User Class")
 
-        # Create a new user
-
+        # inherit from parent Connection class
         # Update self
 
         # Delete self
@@ -19,7 +18,4 @@ class User(Connection):
         # delete a user
 
         # view all users
-
-        
-
 

@@ -1,9 +1,8 @@
-import User
+from User import User
 
-class Todo(User):
-        '''Todo Class'''
-        def __init__(self):
-                pass
+class Todos(User):
+        '''Todo Class - inherits from Connection => User => Todo'''
+        
 
         #  Get all todos, completed, in progress and todos
         def get_todos_all(self):
@@ -46,4 +45,3 @@ class Todo(User):
         def get_todo_metrics_completed(self, timerange):
                 print(f"You want todos from what {timerange}?")
 
-        

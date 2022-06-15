@@ -1,9 +1,10 @@
-import User 
+from Todos import Todos 
 
-class Menu(User):
+class Menu(Todos):
+        '''Menu Class - inherits from Connection => User => Todo => Menu'''
         # From the menu the user can:
-        def __init__(self):
-                pass
+        
+                
         
         # Login Menu
         def login_menu(self):

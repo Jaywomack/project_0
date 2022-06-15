@@ -6,8 +6,10 @@ load_dotenv()
 # connecto to the database
 class Connection:
         '''Creates database connection. Use self.connection or self.connection.cursor'''
+        
         # initialize the database
         def __init__(self):
+
                 self.connection = pymysql.connect(
                         host = os.getenv("HOST"),
                         user = os.getenv("USER"),
@@ -20,11 +22,21 @@ class Connection:
         def show_db(self):
                 with self.connection.cursor() as cursor:
                         cursor.execute("SHOW DATABASES")
+                        print(cursor.fetchall())
                         return cursor.fetchall()
 
         def show_tables(self):
                 with self.connection.cursor() as cursor:
                         cursor.execute("SHOW TABLES")
+                        print(cursor.fetchall())
                         return cursor.fetchall()
+
+        def show_db_users(self):
+                with self.connection.cursor() as cursor:
+                        cursor.execute("SELECT user()")
+                        print(cursor.fetchall())
+                        return cursor.fetchall()
+
+
         
 
