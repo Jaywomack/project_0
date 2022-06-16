@@ -25,6 +25,7 @@ class User(Connection):
 
         # Update self
         def update_user(self,  new_username):
+                '''Update the username of the user'''
                 try:
                         with self.connection.cursor() as cursor:
                                 sql = 'UPDATE Users SET username = %s WHERE username = %s'
@@ -37,6 +38,7 @@ class User(Connection):
 
         # Delete self
         def delete_user(self):
+                '''Delete the user'''
                 try:
                         with self.connection.cursor() as cursor:
                                 delete_user = input("Are you sure? > Y / N")
@@ -56,12 +58,14 @@ class User(Connection):
 
         # Login
         def login_user(self):
+                '''Login the user and set logged_in to true. Check admin status'''
                 name_input = input("Please enter your username: > ")
                 password_input = input("Please enter your password: > ")
                 with self.connection.cursor() as cursor:
                         sql = 'SELECT * FROM Users WHERE username = %s and PASSWORD = %s'
                         cursor.execute(sql, (name_input, password_input))
                         result = cursor.fetchone()
+####### add logic for admin flag
                         if result:
                                 print(f"Welcome {name_input} to ProjectZero Todo List")
                                 self.logged_in = True
@@ -75,6 +79,7 @@ class User(Connection):
 
         # Logout and set logged_in to false
         def logout_user(self):
+                '''Logout the user and set logged_in to false'''
                 self.logged_in = False
                 print("Logged out")
                 os.kill(os.getppid(), signal.SIGHUP)
@@ -86,6 +91,7 @@ class User(Connection):
 
         # Show all users
         def show_users(self):
+                '''Show all users if admin'''
                 if self.admin:
                         try:
                                 with self.connection.cursor() as cursor:
@@ -98,6 +104,7 @@ class User(Connection):
 
         # batch todos to a user
         def batch_to_user(self):
+                '''Batch todos to a user if admin'''
                 print("inserted batch of todos to user")
 
 
