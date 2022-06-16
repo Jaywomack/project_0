@@ -1,5 +1,7 @@
 from Connection import Connection
 import pymysql
+import os
+import signal
 
 class User(Connection):
         '''User Class - inherits from Connection => User'''        
@@ -54,12 +56,30 @@ class User(Connection):
 
         # Login
         def login_user(self):
-                print('login user')
+                name_input = input("Please enter your username: > ")
+                password_input = input("Please enter your password: > ")
+                with self.connection.cursor() as cursor:
+                        sql = 'SELECT * FROM Users WHERE username = %s and PASSWORD = %s'
+                        cursor.execute(sql, (name_input, password_input))
+                        result = cursor.fetchone()
+                        if result:
+                                print(f"Welcome {name_input} to ProjectZero Todo List")
+                                self.logged_in = True
+                                return self.logged_in
+                        else:
+                                print("Invalid username or password")
+                                self.logged_in = False
+                                return self.logged_in
 
 
-        # Logout
+
+        # Logout and set logged_in to false
         def logout_user(self):
-                print('logout user')
+                self.logged_in = False
+                print("Logged out")
+                os.kill(os.getppid(), signal.SIGHUP)
+
+
 
 
         # Admin only methods
@@ -67,6 +87,7 @@ class User(Connection):
         # Show all users
         def show_users(self):
                 print('show users')
+                exit()
 
         # batch todos to a user
         def batch_to_user(self):
@@ -77,7 +98,10 @@ class User(Connection):
 
 
  
-user = User(str('Shaq'), 'test1234', True)
-user.delete_user()
+user = User('John Stockton', 'test1234', True)
+user.login_user()
+print(user.logged_in)
+user.logout_user()
+print(user.logged_in)
 
-
+print('test')
