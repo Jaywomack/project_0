@@ -10,7 +10,7 @@ class User(Connection):
                 self.logged_in = False
                 self.username = str(username)
                 self.password = password
-                self.admin = admin
+                self.admin = False
                 
         def create_user(self):
                 try:
@@ -86,12 +86,19 @@ class User(Connection):
 
         # Show all users
         def show_users(self):
-                print('show users')
-                exit()
+                if self.admin:
+                        try:
+                                with self.connection.cursor() as cursor:
+                                        sql = 'SELECT * FROM Users;'
+                                        cursor.execute(sql)
+                                        print(cursor.fetchall())
+                        except pymysql.Error as e:
+                                print(f"There was an error when fetching users table {e}")
+
 
         # batch todos to a user
         def batch_to_user(self):
-                print("patched to user")
+                print("inserted batch of todos to user")
 
 
 
@@ -99,9 +106,5 @@ class User(Connection):
 
  
 user = User('John Stockton', 'test1234', True)
-user.login_user()
-print(user.logged_in)
-user.logout_user()
-print(user.logged_in)
 
-print('test')
+user.show_users()
