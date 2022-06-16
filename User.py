@@ -6,7 +6,7 @@ class User(Connection):
         def __init__(self, username, password, admin):
                 super().__init__()
                 self.logged_in = False
-                self.username = username
+                self.username = str(username)
                 self.password = password
                 self.admin = admin
                 
@@ -35,7 +35,21 @@ class User(Connection):
 
         # Delete self
         def delete_user(self):
-                print('delete user')
+                try:
+                        with self.connection.cursor() as cursor:
+                                delete_user = input("Are you sure? > Y / N")
+                                
+                                if delete_user == "Y" or "y":
+                                        sql = 'DELETE FROM Users WHERE username = %s'
+                                        cursor.execute(sql,str(self.username))
+                                        self.connection.commit()
+                                        print(f"{str(self.username)} deleted!")
+                                else:
+                                        print("User menu")
+
+                except pymysql.Error as e:
+                        print(f"There was an error when deleting the user{e}")
+        
 
 
         # Login
@@ -54,14 +68,16 @@ class User(Connection):
         def show_users(self):
                 print('show users')
 
+        # batch todos to a user
+        def batch_to_user(self):
+                print("patched to user")
 
-        # delete a user
-        def delete_user(self):
-                print('delete user')
+
+
 
 
  
-user = User('Michael Jordan', 'test1234', True)
+user = User(str('Shaq'), 'test1234', True)
+user.delete_user()
 
-user.update_user('Shaq')
 
