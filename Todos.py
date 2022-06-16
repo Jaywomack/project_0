@@ -1,7 +1,25 @@
-from User import User
+from connection_helper import connection
+import pymysql
 
-class Todos(User):
+
+class Todos():
         '''Todo Class - inherits from Connection => User => Todo'''
+
+        def __init__(self):
+                self.TodoID = None
+
+        # create a todo
+        def create_todo(self, description):
+
+                try:
+                        with connection.cursor() as cursor:
+                                sql = 'INSERT INTO Todos (UserId, username, description) VALUES (%s,%s,%s)'
+                                cursor.execute(sql,( self.UserId, self.username, description))
+                                connection.commit()
+                                print(f"{self.username} your todo has been added")
+
+                except pymysql.Error  as e:
+                        print(f"There was an error creating user: {e}")
 
         #  Get all todos, completed, in progress and todos
         def get_todos_all(self):
@@ -58,3 +76,4 @@ class Todos(User):
         def get_todo_metrics_completed(self, timerange):
                 print(f"You want todos from what {timerange}?")
 
+ 

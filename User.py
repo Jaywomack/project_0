@@ -1,36 +1,62 @@
-from Connection import Connection
+from Todos import Todos
+from connection_helper import connection
 import pymysql
 import os
 import signal
 
-class User(Connection):
+class User(Todos):
         '''User Class - inherits from Connection => User'''        
         def __init__(self, username, password, admin):
-                super().__init__()
+
                 self.logged_in = False
-                self.username = str(username)
+                self.username = username
                 self.password = password
-                self.admin = False
+                self.admin = admin
+                self.UserId = None
+
                 
+                
+        def show(self):
+                print(f"User: {self.username}")
+                print(f"UserId: {self.UserId}")
+                print(f"Password: {self.password}")
+                print(f"Admin: {self.admin}")
+                print(f"Logged In: {self.logged_in}")
+                print("\n")
+                
+
         def create_user(self):
                 try:
-                        with self.connection.cursor() as cursor:
+                        with connection.cursor() as cursor:
                                 sql = 'INSERT INTO Users (username, password, admin) VALUES (%s,%s,%s)'
                                 cursor.execute(sql,( self.username, self.password, self.admin))
-                                self.connection.commit()
+                                connection.commit()
                                 print(f"{self.username} added to Users database")
                 except pymysql.Error  as e:
                         print(f"There was an error creating user: {e}")
+
+
+        def set_user_id(self):
+                try:
+                        with connection.cursor() as cursor:
+                                sql = 'SELECT * FROM Users WHERE username = %s'
+                                cursor.execute(sql, self.username)
+                                result = cursor.fetchone()
+                                self.UserId = result['UserId']
+                                print(f"UserId: {self.UserId}")
+
+                except pymysql.Error  as e:
+                        print(f"There was an error when fetching userid {e}")
 
 
         # Update self
         def update_user(self,  new_username):
                 '''Update the username of the user'''
                 try:
-                        with self.connection.cursor() as cursor:
+                        with connection.cursor() as cursor:
                                 sql = 'UPDATE Users SET username = %s WHERE username = %s'
                                 cursor.execute(sql, (new_username, self.username))
-                                self.connection.commit()
+                                connection.commit()
                                 print(f"{self.username} updated to {new_username}")
                 except pymysql.Error  as e:
                         print(f"There was an error updating user: {e}")
@@ -40,13 +66,13 @@ class User(Connection):
         def delete_user(self):
                 '''Delete the user'''
                 try:
-                        with self.connection.cursor() as cursor:
+                        with connection.cursor() as cursor:
                                 delete_user = input("Are you sure? > Y / N")
                                 
                                 if delete_user == "Y" or "y":
                                         sql = 'DELETE FROM Users WHERE username = %s'
                                         cursor.execute(sql,str(self.username))
-                                        self.connection.commit()
+                                        connection.commit()
                                         print(f"{str(self.username)} deleted!")
                                 else:
                                         print("User menu")
@@ -61,7 +87,7 @@ class User(Connection):
                 '''Login the user and set logged_in to true. Check admin status'''
                 name_input = input("Please enter your username: > ")
                 password_input = input("Please enter your password: > ")
-                with self.connection.cursor() as cursor:
+                with connection.cursor() as cursor:
                         sql = 'SELECT * FROM Users WHERE username = %s and PASSWORD = %s'
                         cursor.execute(sql, (name_input, password_input))
                         result = cursor.fetchone()
@@ -94,14 +120,14 @@ class User(Connection):
                 '''Show all users if admin'''
                 if self.admin:
                         try:
-                                with self.connection.cursor() as cursor:
+                                with connection.cursor() as cursor:
                                         sql = 'SELECT * FROM Users;'
                                         cursor.execute(sql)
                                         print(cursor.fetchall())
                         except pymysql.Error as e:
                                 print(f"There was an error when fetching users table {e}")
 
-
+#####Finish batching function
         # batch todos to a user
         def batch_to_user(self):
                 '''Batch todos to a user if admin'''
@@ -109,9 +135,6 @@ class User(Connection):
 
 
 
-
-
- 
-user = User('John Stockton', 'test1234', True)
-
-user.show_users()
+Michael = User('Michael Jordan', 'test1234', True)
+Michael.set_user_id()
+# Michael.show()
