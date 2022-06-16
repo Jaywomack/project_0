@@ -22,8 +22,15 @@ class User(Connection):
 
 
         # Update self
-        def update_user(self):
-                print('update user')
+        def update_user(self,  new_username):
+                try:
+                        with self.connection.cursor() as cursor:
+                                sql = 'UPDATE Users SET username = %s WHERE username = %s'
+                                cursor.execute(sql, (new_username, self.username))
+                                self.connection.commit()
+                                print(f"{self.username} updated to {new_username}")
+                except pymysql.Error  as e:
+                        print(f"There was an error updating user: {e}")
 
 
         # Delete self
@@ -53,10 +60,8 @@ class User(Connection):
                 print('delete user')
 
 
-        # update a user
-        def update_user(self):
-                print('update user')
+ 
+user = User('Michael Jordan', 'test1234', True)
 
+user.update_user('Shaq')
 
-John = User('Michael Jordan', 'test1234', True)
-John.create_user()

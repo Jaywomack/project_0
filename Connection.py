@@ -7,10 +7,11 @@ load_dotenv()
 # connecto to the database
 class Connection:
         '''Creates database connection. Use self.connection or self.connection.cursor'''
-
+        
         # initialize the database
         def __init__(self):
-
+                global connection
+                connection = None
                 self.connection = pymysql.connect(
                         host = os.getenv("HOST"),
                         user = os.getenv("USER"),
