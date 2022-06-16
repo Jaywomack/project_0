@@ -36,6 +36,7 @@ from Menu import Menu
                 # # mark a todo as complete
                 # # Lookup todo by name and edit/delete a todo
                 # # Export todos to 
+                # # logout
          
 # Admin Logged in
         # # Admin menu is shown that lists the options to:
@@ -43,5 +44,5 @@ from Menu import Menu
                 # # todo average time to completion 
                 # # todo total completed
                 # # todo performance
-
+                # # logout
 

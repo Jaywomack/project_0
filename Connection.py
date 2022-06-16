@@ -1,4 +1,3 @@
-from ssl import CertificateError
 import pymysql.cursors
 from dotenv import load_dotenv
 import os
@@ -29,12 +28,14 @@ class Connection:
 
         def show_tables(self):
                 with self.connection.cursor() as cursor:
-                        cursor.execute("SHOW TABLES")
+                        sql = "SHOW TABLES"
+                        cursor.execute(sql)
                         print(cursor.fetchall())
                         return cursor.fetchall()
 
         def show_db_users(self):
                 with self.connection.cursor() as cursor:
+                        sql = "SELECT * FROM Users"
                         cursor.execute("SELECT user()")
                         print(cursor.fetchall())
                         return cursor.fetchall()
@@ -43,10 +44,12 @@ class Connection:
         def show_table_fields(self, table):
                 '''Pass a table to the function to query its fields'''
                 with self.connection.cursor() as cursor:
-                        cursor.execute(f"SHOW COLUMNS from {table}")
+                        sql = f"SHOW COLUMNS FROM {table}"
+                        cursor.execute(sql)
                         print(cursor.fetchall())
+                        return cursor.fetchall()
                        
 cnx = Connection()
 
-cnx.show_table_fields("Users")
+
 
