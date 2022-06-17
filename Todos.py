@@ -51,5 +51,5 @@ class Todos():
                         print(f'There was an error retrieving your request. {e}')
 
 
-todo_1 = Todos()
-todo_1.create_todo("This is the first todo in the database")
+# todo_1 = Todos()
+# todo_1.create_todo("This is the first todo in the database")

@@ -5,18 +5,16 @@ CREATE TABLE Todos (
         PRIMARY KEY (TodoID)
 );
 
-CREATE TABLE IF NOT EXISTS UserMetrics(
-        UserId int NOT NULL,
-        Username varchar(255) NOT NULL,
-        TodosCompleted int NOT NULL,
-        TodosInProcess int NOT NULL,
-        TodosUncompleted int NOT NULL,
-        TodosCreated int NOT NULL,
-        TodosDeleted int NOT NULL,
-        TodosUpdated int NOT NULL,
-        AverageTodosCompletedPerDay int NOT NULL,
-        AverageTodosCompletedPerWeek int NOT NULL,
-        AverageTodosCompletedPerMonth int NOT NULL,
-        PRIMARY KEY(UserId),
-        FOREIGN KEY(UserId) REFERENCES Users(UserId)
-);
+CREATE TABLE Tasks(
+        TaskID INT NOT NULL AUTO_INCREMENT,
+        created DATE NOT NULL,
+        cardio INT,
+        weights BOOLEAN,
+        journal DOUBLE,
+        writing DOUBLE,
+        water INT,
+        whole_foods BOOLEAN,
+        sugar BOOLEAN,
+        learned BOOLEAN,
+        PRIMARY KEY (TaskID)
+)
