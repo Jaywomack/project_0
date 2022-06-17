@@ -7,19 +7,20 @@ import signal
 class User(Todos):
         '''User Class - inherits from Connection => User'''        
         def __init__(self, username, password, admin):
-
+                self.username = username
                 self.logged_in = False
                 self.username = username
                 self.password = password
                 self.admin = admin
                 self.UserId = None
+                self.set_user_id()
+                self.show()
 
-                
                 
         def show(self):
                 print(f"User: {self.username}")
                 print(f"UserId: {self.UserId}")
-                print(f"Password: {self.password}")
+                print(f"Password: *******")
                 print(f"Admin: {self.admin}")
                 print(f"Logged In: {self.logged_in}")
                 print("\n")
@@ -43,7 +44,6 @@ class User(Todos):
                                 cursor.execute(sql, self.username)
                                 result = cursor.fetchone()
                                 self.UserId = result['UserId']
-                                print(f"UserId: {self.UserId}")
 
                 except pymysql.Error  as e:
                         print(f"There was an error when fetching userid {e}")
@@ -136,5 +136,5 @@ class User(Todos):
 
 
 Michael = User('Michael Jordan', 'test1234', True)
-Michael.set_user_id()
-# Michael.show()
+
+Michael.create_todo(Michael.UserId, Michael.username, 'Test Todo from Users.py')

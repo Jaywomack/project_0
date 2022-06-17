@@ -3,18 +3,18 @@ import pymysql
 
 
 class Todos():
-        '''Todo Class - inherits from Connection => User => Todo'''
+        '''Todo Class'''
 
         def __init__(self):
                 self.TodoID = None
 
         # create a todo
-        def create_todo(self, description):
+        def create_todo(self, UserId, username, description):
 
                 try:
                         with connection.cursor() as cursor:
                                 sql = 'INSERT INTO Todos (UserId, username, description) VALUES (%s,%s,%s)'
-                                cursor.execute(sql,( self.UserId, self.username, description))
+                                cursor.execute(sql,( UserId, username, description))
                                 connection.commit()
                                 print(f"{self.username} your todo has been added")
 
@@ -55,25 +55,3 @@ class Todos():
         def export_todos(self):
                 print("Export todos to a file")
 
-
-        # Admin only methods
-        # todos completed in a time range
-        def get_todo_metrics_completed(self, timerange):
-                print(f"You want todos from what {timerange}?")
-
-
-        # todo average time to completion 
-        def get_todo_metrics_time_average(self, timerange):
-                print(f"You want todos from what {timerange}?")
-
-
-        # todo total completed
-        def get_todo_metrics_total_completed(self, timerange):
-                print(f"You want todos from what {timerange}?")
-
-                
-        # todo performance
-        def get_todo_metrics_completed(self, timerange):
-                print(f"You want todos from what {timerange}?")
-
- 

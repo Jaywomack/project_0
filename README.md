@@ -208,4 +208,4 @@
 
 # ERR Diagram
 
-!['Err Diagram'](./err_diagram.png)
+# ADD ERR #### DONT FORGET
