@@ -1,11 +1,8 @@
-from User import User
+
 from Todos import Todos
 from Menu import Menu
+from Tasks import Tasks
 
-### Productivity app
-
-task_dict = {'cardio':0,'weights':False,'journal':0.1,'writing':0.1,'water':1,'whole_foods':False,'sugar':True,'learned':False}
-
-
-
+menu = Menu()
+menu.show_log_tasks_menu()
 
