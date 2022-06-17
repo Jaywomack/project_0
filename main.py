@@ -3,7 +3,7 @@ from Todos import Todos
 from Menu import Menu
 
 # The main.py is executed on the command line
-
+User.login_user()
 # The welcome prompt is shown
 
 # The login prompt is shown

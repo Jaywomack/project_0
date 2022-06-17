@@ -7,7 +7,6 @@ import signal
 class User(Todos):
         '''User Class - inherits from Connection => User'''        
         def __init__(self, username, password, admin):
-                self.username = username
                 self.logged_in = False
                 self.username = username
                 self.password = password
@@ -83,6 +82,7 @@ class User(Todos):
 
 
         # Login
+        @staticmethod
         def login_user(self):
                 '''Login the user and set logged_in to true. Check admin status'''
                 name_input = input("Please enter your username: > ")
@@ -139,3 +139,4 @@ Michael = User('Michael Jordan', 'test1234', True)
 
 # Michael.create_todo(Michael.UserId, Michael.username, 'Another one')
 # Michael.get_todos_all(Michael.UserId)
+Michael.export_todos(Michael.UserId,"todos")

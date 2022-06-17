@@ -31,35 +31,19 @@ class Todos():
                                 print("Your List of Todos: ")
                                 [print(x['description']) for x in cursor.fetchall()]
                 except pymysql.ERROR as e:
-                        print('There was an error retrieving your request. {e}')
+                        print(f'There was an error retrieving your request. {e}')
                 
 
-        # view all the uncompleted todos
-        def get_todos_uncompleted(self):
-                print("view all the uncompleted todos")
-
-
-        # view all the completed todos
-        def get_todos_completed(self):
-                print("view all the completed todos")
-
-
-        # view all the uncompleted todos to a certain date
-        def get_todos_by_range(self):
-                print("view all the uncompleted todos to a certain date")        
-
-
-        # mark a todo as complete
-        def set_todo_completed(self):
-                print("Mark a todo as complete")
-
-
-        # Lookup todo by name and edit/delete a todo
-        def get_todo(self):
-                print("Lookup todo by name and edit/delete a todo")
-
-
         # Export todos to 
-        def export_todos(self):
-                print("Export todos to a file")
+        def export_todos(self, UserId, name_file):
+                try:
+                        with connection.cursor() as cursor:
+                                sql = 'SELECT * FROM Todos WHERE UserId = %s'
+                                cursor.execute(sql,(UserId))
+                                f = open(f"{name_file}.txt","w")
+                                [f.writelines(f"{x['description']}\n") for x in cursor.fetchall()]
+                                print(f"Todos written to file {name_file}")
+                except pymysql.ERROR as e:
+                        print(f'There was an error retrieving your request. {e}')
+
 

@@ -1,5 +1,5 @@
 from Todos import Todos 
-
+from User import User
 
 class Menu(Todos):
         '''Menu Class - inherits from Connection => User => Todo => Menu'''
@@ -10,7 +10,11 @@ class Menu(Todos):
         # Login Menu
         def login_menu(self):
                 # Welcome prompt
-                # Login prompt
+                # print("Welcome to the ProjectZero Todo App")
+                # # Login prompt
+                # print("Please Login")
+                # username_input = input("Please enter your username > ")
+                # password_input = input("Please enter your password > ")
                 # If the user is an admin, they can see the admin login menu
                 # If the user is not found, the user is prompted to create a new user
                 # If the user is found, the user is prompted to login
