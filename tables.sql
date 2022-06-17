@@ -1,28 +1,8 @@
 -- Create three tables in ProjectZero database:
-CREATE TABLE IF NOT EXISTS Users(
-        UserId int NOT NULL AUTO_INCREMENT,
-        username varchar(255) NOT NULL,
-        PASSWORD varchar(255) NOT NULL,
-        admin boolean NOT NULL,
-        created_at datetime NOT NULL,
-        updated_at datetime NOT NULL,
-        deleted_at datetime,
-        PRIMARY KEY(UserId)
-);
-
-CREATE TABLE IF NOT EXISTS Todos(
-        TodoId int NOT NULL AUTO_INCREMENT,
-        UserId int NOT NULL,
-        Category varchar(255) NOT NULL,
-        username varchar(255) NOT NULL,
-        description varchar(255) NOT NULL,
-        date varchar(255) NOT NULL,
-        time varchar(255) NOT NULL,
-        complete boolean NOT NULL,
-        completeDate varchar(255) NOT NULL,
-        completeTime varchar(255) NOT NULL,
-        PRIMARY KEY(TodoId),
-        FOREIGN KEY(UserId) REFERENCES Users(UserId)
+CREATE TABLE Todos (
+        TodoID INT NOT NULL AUTO_INCREMENT,
+        Description VARCHAR(255) NOT NULL,
+        PRIMARY KEY (TodoID)
 );
 
 CREATE TABLE IF NOT EXISTS UserMetrics(

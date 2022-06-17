@@ -134,9 +134,3 @@ class User(Todos):
                 print("inserted batch of todos to user")
 
 
-
-Michael = User('Michael Jordan', 'test1234', True)
-
-# Michael.create_todo(Michael.UserId, Michael.username, 'Another one')
-# Michael.get_todos_all(Michael.UserId)
-Michael.export_todos(Michael.UserId,"todos")

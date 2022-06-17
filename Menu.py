@@ -2,45 +2,75 @@ from Todos import Todos
 from User import User
 
 class Menu(Todos):
-        '''Menu Class - inherits from Connection => User => Todo => Menu'''
-        # From the menu the user can:
+        '''Menu Class'''
 
+
+        def main_menu(self):
+#         ## What would you like to do?
+#         * Todos Menu
+#         * Log Daily Tasks
+#         * Generate Reports
+                pass
                 
-        
-        # Login Menu
-        def login_menu(self):
-                # Welcome prompt
-                # print("Welcome to the ProjectZero Todo App")
-                # # Login prompt
-                # print("Please Login")
-                # username_input = input("Please enter your username > ")
-                # password_input = input("Please enter your password > ")
-                # If the user is an admin, they can see the admin login menu
-                # If the user is not found, the user is prompted to create a new user
-                # If the user is found, the user is prompted to login
 
+        def show_todos_menu(self):      
+                # # Todos Menu
+
+#         * See todos
+#         * Write todos to file
+#         * Create todo
+#         * Update todo
+#         * Delete todo
+         
                 pass
 
-        # The user is prompted to open menu or quit
-        # The user can type menu to see the menu
-        def show_user_menu(self):
-                # the menu should have tasks that can completed on a todo:
-                # 1. view all todos
-                # 2. view all uncompleted todos
-                # 3. view all completed todos
-                # 4. view all todos to a certain date
-                # 5. mark a todo as complete
-                # 6. lookup a todo by name and edit/delete a todo
-                # 7. export todos to a file
+
+        def show_log_tasks_menu(self):
+                #         * Log Exercise Time
+
+#                         * Cardio
+#                                         * How many minutes?
+
+#                         * weights?
+#                                         * How many minutes?
+
+
+#         * Log Journal
+#                         *How many pages did you write?
+
+
+#         * Log Water
+#                         * How many ounces?
+
+
+#         * Did you eat whole foods today?
+#                         * Y or N?
+
+
+#         * Did you eat sugar today?
+#                         * Y or N?
+
+
+#         * Did you learn something today?
+#                         * Y or N?
+#                         * What did you learn?
+
+#         * Did you do cardio today?
+#                         * Y or N?
+#                         * How many mins?
+
+        # generate reports menu
                 pass
 
-        # Show admin menu
-        def show_admin_menu(self):
-                # menuitem - todos completed in a time range
-                # menuitem - todo average time to completion 
-                # menuitem - todo total completed
-                # menuitem - todo performance
+        def generate_reports_menu(self):
+
+                # * streaks
+                # * cumulative minutes cardio
+                # * cumulative minutes weights
+                # *cumulative pages written
+                # * write file about what you have learned
                 pass
+ 
 
         # The user can type quit to exit the program
         def quit_menu(self):
