@@ -1,5 +1,6 @@
 from connection_helper import connection
 import pymysql
+from pymysql import Error
 
 
 class Todos():
@@ -22,8 +23,15 @@ class Todos():
                         print(f"There was an error creating user: {e}")
 
         #  Get all todos, completed, in progress and todos
-        def get_todos_all(self):
-                print("Get all todos, completed, in progress and todos")
+        def get_todos_all(self, UserId):
+                try:
+                        with connection.cursor() as cursor:
+                                sql = 'SELECT * FROM Todos WHERE UserId = %s'
+                                cursor.execute(sql,(UserId))
+                                print("Your List of Todos: ")
+                                [print(x['description']) for x in cursor.fetchall()]
+                except pymysql.ERROR as e:
+                        print('There was an error retrieving your request. {e}')
                 
 
         # view all the uncompleted todos

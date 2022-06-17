@@ -14,7 +14,7 @@ class User(Todos):
                 self.admin = admin
                 self.UserId = None
                 self.set_user_id()
-                self.show()
+                # self.show()
 
                 
         def show(self):
@@ -137,4 +137,5 @@ class User(Todos):
 
 Michael = User('Michael Jordan', 'test1234', True)
 
-Michael.create_todo(Michael.UserId, Michael.username, 'Test Todo from Users.py')
+# Michael.create_todo(Michael.UserId, Michael.username, 'Another one')
+# Michael.get_todos_all(Michael.UserId)
