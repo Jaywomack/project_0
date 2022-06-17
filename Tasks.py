@@ -5,6 +5,10 @@ import time
 
 class Tasks:
         
+        
+        def ingest_task_data(self):
+                pass
+
         def create_task(self,cardio,weights,journal,writing,water,whole_foods,sugar,learned):
                 try:
                         with connection.cursor() as cursor:

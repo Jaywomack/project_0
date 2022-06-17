@@ -1,6 +1,6 @@
 from connection_helper import connection
 import pymysql
-
+import time
 
 
 class Todos():
@@ -17,11 +17,11 @@ class Todos():
 
                 try:
                         with connection.cursor() as cursor:
-                                sql = 'INSERT INTO Todos ( Description) VALUES (%s)'
-                                cursor.execute(sql, (description)
+                                sql = 'INSERT INTO Todos ( Description, created) VALUES (%s,%s)'
+                                cursor.execute(sql, (description, time.strftime('%Y-%m-%d %H:%M:%S'))
                                 )
                                 connection.commit()
-                                print(f"Todo {description[:12]} created")
+                                print(f"Todo:>> {description[:25]} created")
 
                 except pymysql.Error  as e:
                         print(f"There was an error creating user: {e}")

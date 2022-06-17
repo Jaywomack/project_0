@@ -37,10 +37,6 @@ class Menu(Todos):
                         todo.delete_todo(todo_id)
 
 
-         
-                
-
-
         def show_log_tasks_menu(self):
                 task = Tasks()
                 task_dict = {'cardio':0,'weights':False,'journal':0.1,'writing':0.1,'water':1,'whole_foods':False,'sugar':True,'learned':False}
