@@ -30,4 +30,4 @@ class Tasks:
 
 task = Tasks()
 # task.create_task(60,True,6.5,6.5,128,True,True,True)
-task.delete_task()
+# task.delete_task()

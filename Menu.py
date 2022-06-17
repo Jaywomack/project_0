@@ -15,15 +15,30 @@ class Menu(Todos):
                 
 
         def show_todos_menu(self):      
-                # # Todos Menu
+                todo = Todos()
+                usr = int(input('''Hello, what can I help you with?
+        1.) See all todos
+        2.) Write todos toa text file
+        3.) Create todo
+        4.) Delete todo
+        \t\n >>'''))
+                
+                if usr == 1:
+                        todo.get_todos_all()
+                elif usr == 2:
+                        file_name = input("Please enter a filename >>")
+                        todo.export_todos(file_name)
+                elif usr == 3:
+                        description  = input("Please enter a description >>")
+                        todo.create_todo(description)
+                elif usr == 4:
+                        todo.get_todos_all()
+                        todo_id = input("Please enter the todo id you wish to delete >> ")
+                        todo.delete_todo(todo_id)
 
-#         * See todos
-#         * Write todos to file
-#         * Create todo
-#         * Update todo
-#         * Delete todo
+
          
-                pass
+                
 
 
         def show_log_tasks_menu(self):
@@ -34,7 +49,7 @@ class Menu(Todos):
                 weights = input("Did you lift weights today? Y / N  >> ")
                 if weights ==  'Y' or 'y':
                         task_dict['weights'] = True
-                elif sugar ==  'N' or 'n':
+                elif weights ==  'N' or 'n':
                          task_dict['weights'] = False
 
                 task_dict['journal'] = input('How many pages did you write in your journal today? >> ')

@@ -4,5 +4,6 @@ from Menu import Menu
 from Tasks import Tasks
 
 menu = Menu()
-menu.show_log_tasks_menu()
+# menu.show_log_tasks_menu()
+menu.show_todos_menu()
 
