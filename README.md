@@ -208,4 +208,4 @@
 
 # ERR Diagram
 
-# ADD ERR #### DONT FORGET
+![](./erd.png)
