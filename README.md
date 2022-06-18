@@ -2,9 +2,9 @@
 
 &nbsp;
 
-# Python&nbsp; | &nbsp; MySQL&nbsp; | &nbsp;CLI To-Do App
+# Python&nbsp; | &nbsp; MySQL&nbsp; | &nbsp;CLI Productivity App
 
-## **Description:** A classic To-Do application that allows users to create an account and create todos that are stored, completed and tabulated for viewing later.
+## **Description:** A productivity app that will allow a user to track daily habits, write journals, and write todos. Todos, journals, and tasks and can be written to external files. Tasks can be added from the past, from excel files.
 
 &nbsp;
 
@@ -24,140 +24,6 @@
 
 ### 5. Deploy
 
-&nbsp;
-
-# User Stories
-
-&nbsp;
-
-## Base Level User
-
----
-
-&nbsp;
-
-> ## As a user of the CLI App I want to be able to write todos and save them so I can check them off as I complete them.
-
-&nbsp;
-
-> ## As a user of the CLI App it would be useful if my todos were sorted by still needing to be done, in progress, and todos that are complete.
-
-&nbsp;
-
-> ## As a user of the CLI App it would be nice if I could create todos and still be able to update them if I made a mistake.
-
-&nbsp;
-
-> ## As a user of the CLI App it would be nice if I could delete a todo that I decide I no loner want.
-
-&nbsp;
-
-## Admin Level User
-
----
-
-&nbsp;
-
-> ## As a admin of the CLI App it would be nice if I could easily look at a user's account and see all of their information printed to the console in a way that is informative and useful to seeing what the user is doing and has been doing recently.
-
-&nbsp;
-
-> ## As an admin it would be useful to have a way to compare productivity between users. It would be nice to have metrics that tell how many tasks the user has made and completed. It would be useful to have multiple
-
-&nbsp;
-
-# Users can log in on the command line as a user or as an admin.
-
-&nbsp;
-
-# For a user the current options are:
-
-&nbsp;
-
-> ## The current todos are displayed
-
-&nbsp;
-
-> ## The user is prompted to open menu or quit
-
-&nbsp;
-
-> ## The user can type menu to see the menu
-
-&nbsp;
-
-> ## The user can type quit to exit the program
-
-&nbsp;
-
-> ## From the menu the user can:
-
-&nbsp;
-
-> ## add a new todo
-
-&nbsp;
-
-> ## view all the todos
-
-&nbsp;
-
-> ## view all the completed todos
-
-&nbsp;
-
-> ## view all the uncompleted todos to a certain date
-
-&nbsp;
-
-> ## view all the uncompleted todos
-
-&nbsp;
-
-> ## mark a todo as complete
-
-&nbsp;
-
-> ## Lookup todo by name and edit a todo
-
-&nbsp;
-
-> ## delete a todo
-
----
-
-&nbsp;
-
-# If the user is an admin the current options are:
-
-&nbsp;
-
-> ## view all the todos by a specific user
-
-&nbsp;
-
-> ## view all the completed todos by a specific user
-
-&nbsp;
-
-> ## view all the uncompleted todos by a specific user
-
-&nbsp;
-
-> ## view all the todos by a specific date
-
-&nbsp;
-
-> ## view all the completed todos by a specific date
-
-&nbsp;
-
-> ## view all the uncompleted todos by a specific date
-
-&nbsp;
-
-> ## create a performance report from a specific user
-
 ---
 
 &nbsp;
@@ -165,8 +31,6 @@
 # Tech Stack:
 
 > ## Python 3.9.13
-
-> ## Vs Code 1.68.0
 
 > ## MySQL 8.0.29
 
@@ -178,23 +42,25 @@
 
 &nbsp;
 
-> ## Rich for colorful terminals
+> ## pandas for manipulating data and read/write files
 
-> ## sql-connector-python for database connection
+> ## sqlalchemy to create engine to import Excel file into MySQL db
 
-> ## datetime for date and time
+> ## pymysql for database connection
 
-> ## argparse for command line arguments
+> ## signal for signal handlers (kill terminal on menu quit)
 
-> ## sys for system functions
+> ## time for datestamps in 'created' fields
+
+> ## tabulate for rendering data to tables in terminal
 
 > ## os for operating system functions
 
-> ## re for regular expressions
-
-> ## Dotenv for hiding variables
+> ## dotenv for hiding variables
 
 ---
+
+&nbsp;
 
 # Project Management:
 
@@ -203,6 +69,8 @@
 > ## Agile
 
 > ## Kanban
+
+> ## Vs Code 1.68.0
 
 &nbsp;
 
