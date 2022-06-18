@@ -1,6 +1,8 @@
 from connection_helper import connection
 import pymysql
 import time    
+from tabulate import tabulate
+
 
 
 class Tasks:
@@ -19,6 +21,17 @@ class Tasks:
 
                 except pymysql.Error as e:
                         print(f"Error creating task {e}")
+
+        def get_all_tasks(self):
+                try:
+                        with connection.cursor() as cursor:
+                                lookback = int(input("How many days would you like to lookback?"))
+                                sql = 'SELECT * FROM Tasks LIMIT %s'
+                                cursor.execute(sql,(lookback))
+                                print(tabulate(cursor.fetchall(), headers='keys'))
+
+                except pymysql.Error as e:
+                        print(f"There was an error getting your tasks {e}")
 
         def delete_task(self):
                 task_to_delete = input("Please enter a task number for which task you would like to delete > ")

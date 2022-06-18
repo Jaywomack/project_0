@@ -1,6 +1,8 @@
 from connection_helper import connection
 import pymysql
 import time
+from tabulate import tabulate
+
 
 
 class Journals():
@@ -27,7 +29,8 @@ class Journals():
                                 sql = 'SELECT * FROM Journals'
                                 cursor.execute(sql)
                                 print("Your List of journals: ")
-                                [print(x['JournalID'], x['Description'][:50]) for x in cursor.fetchall()]
+                                data = [[x['JournalID'], x['Description'][:50]] for x in cursor.fetchall()]
+                                print(tabulate(data))
                 except pymysql.Error as e:
                         print(f'There was an error retrieving your request. {e}')
                 
