@@ -30,7 +30,7 @@ class Menu(Todos):
                 elif main_menu_choice == 2:
                         self.show_log_tasks_menu()
                 elif main_menu_choice == 3:
-                        self.show_journal_menu()
+                        self.show_journals_menu()
                 elif main_menu_choice == 4:
                         self.generate_reports_menu()
                 elif main_menu_choice == 5:
@@ -98,7 +98,7 @@ class Menu(Todos):
 
 
 
-        def show_Journals_menu(self):      
+        def show_journals_menu(self):      
                 journal = Journals()
                 usr = int(input('''Hello, what can I help you with?
         1.) See all Journals
@@ -108,15 +108,16 @@ class Menu(Todos):
         \t\n >>'''))
                         
                 if usr == 1:
-                        journal.get_Journals_all()
+                        journal.get_journals_all()
                 elif usr == 2:
                         file_name = input("Please enter a filename >>")
-                        journal.export_Journals(file_name)
+                        journal.export_all_
+                        journals(file_name)
                 elif usr == 3:
                         description  = input("Please enter a description >>")
                         journal.create_journal(description)
                 elif usr == 4:
-                        journal.get_Journals_all()
+                        journal.get_journals_all()
                         journal_id = input("Please enter the Journal id you wish to delete >> ")
                         journal.delete_journal(journal_id)
 
