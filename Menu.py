@@ -1,26 +1,20 @@
+from connection_helper import connection
 from Todos import Todos 
 from Journals import Journals 
 from Tasks import Tasks
 import os
 import signal
 
-
 class Menu(Todos):
         '''Menu Class'''
 
-
         def main_menu(self):
-#         ## What would you like to do?
-                
-                print("Loading Productivity App")
-
                 print('Welcome to Your Productivity App\n')
                 print("""
                 1.) Todos
                 2.) Tasks
                 3.) Journal
-                4.) Metrics
-                5.) Quit
+                4.) Quit
                 """)
 
                 main_menu_choice = int(input("What would you like to do today?  >> "))
@@ -32,8 +26,6 @@ class Menu(Todos):
                 elif main_menu_choice == 3:
                         self.show_journals_menu()
                 elif main_menu_choice == 4:
-                        self.generate_reports_menu()
-                elif main_menu_choice == 5:
                         self.quit_menu()
                 
 
@@ -66,6 +58,8 @@ class Menu(Todos):
                 task_input = int(input('''Hello, what can I help you with?
         1.) Log Daily Tasks
         2.) Get Past Tasks
+        3.) Ingest Tasks Data From Excel File
+        4.) Export Tasks Data to .csv
 
         \t\n >>'''))
                 if task_input == 1:
@@ -105,7 +99,12 @@ class Menu(Todos):
                 elif task_input == 2:
                         task.get_all_tasks()
                         input("Hit ENTER")
-
+                elif task_input == 3:
+                        task.ingest_task_data()
+                        input("Hit ENTER")
+                elif task_input == 4:
+                        task.export_tasks()
+                        input("Hit ENTER")
 
 
         def show_journals_menu(self):      
@@ -132,17 +131,6 @@ class Menu(Todos):
                         journal.delete_journal(journal_id)
 
 
-        def generate_reports_menu(self):
-
-                # * streaks
-                # * cumulative minutes cardio
-                # * cumulative minutes weights
-                # *cumulative pages written
-                # * write file about what you have learned
-                pass
- 
-
-        # The user can type quit to exit the program
         def quit_menu(self):
+                connection.close()
                 return os.kill(os.getppid(), signal.SIGHUP)
-

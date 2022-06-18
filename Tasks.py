@@ -1,15 +1,35 @@
 from connection_helper import connection
 import pymysql
+import pandas as pd
 import time    
 from tabulate import tabulate
-
-
+from sqlalchemy import create_engine
 
 class Tasks:
         
-        
+        def export_tasks(self):
+                try:
+                        with connection:
+                                name_file = input('What would you like to name your file?')
+                                sql ='SELECT * FROM Tasks;'
+                                tasks_df = pd.read_sql(sql,connection)
+                                return tasks_df.to_csv(f'{name_file}.csv')
+
+                except pymysql.Error as e:
+                        print(e)
+
         def ingest_task_data(self):
-                pass
+                try:
+                        xl_file = pd.ExcelFile('./task_sheet.xlsx')
+                        xl_df = xl_file.parse(sheet_name='task_log')
+                        engine = create_engine("mysql+pymysql://{user}:{pw}@revature-project-db-do-user-8494246-0.b.db.ondigitalocean.com:25060/ProjectZero"
+                        .format(user="jay",
+                                pw="test1234"))
+                        xl_df.to_sql('Tasks', con = engine, if_exists = 'append', chunksize = 1000, index = False)
+                        print("Tasks added to database")
+
+                except pymysql.Error as e:
+                        print(e)
 
         def create_task(self,cardio,weights,journal,writing,water,whole_foods,sugar,learned):
                 try:
@@ -44,7 +64,3 @@ class Tasks:
 
                 except pymysql.Error as e:
                         print(f"There was am error deleting the task {e}")
-
-task = Tasks()
-# task.create_task(60,True,6.5,6.5,128,True,True,True)
-# task.delete_task()

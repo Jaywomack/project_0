@@ -3,15 +3,8 @@ import pymysql
 import time
 from tabulate import tabulate
 
-
 class Todos():
         '''Todo Class'''
-
-        def __init__(self):
-                self.TodoID = None
- 
-
-
 
         # create a todo
         def create_todo(self, description):
@@ -62,8 +55,3 @@ class Todos():
                                 print(f"Todo {todo_id} has been deleted.")
                 except pymysql.Error as e:
                         print(f"There was an error deleting the todo {e}")
-
-        
-
-# todo_1 = Todos()
-# todo_1.create_todo("This is the first todo in the database")

@@ -3,8 +3,6 @@ import pymysql
 import time
 from tabulate import tabulate
 
-
-
 class Journals():
         '''journal Class'''
 
@@ -56,8 +54,3 @@ class Journals():
                                 print(f"journal {journal_id} has been deleted.")
                 except pymysql.Error as e:
                         print(f"There was an error deleting the journal {e}")
-
-        
-
-journal_1 = Journals()
-journal_1.export_all_journals('text')
