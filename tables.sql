@@ -2,12 +2,13 @@
 CREATE TABLE Todos (
         TodoID INT NOT NULL AUTO_INCREMENT,
         Description VARCHAR(255) NOT NULL,
+        created DATE NOT NULL,
         PRIMARY KEY (TodoID)
 );
 
 CREATE TABLE Tasks(
         TaskID INT NOT NULL AUTO_INCREMENT,
-        created DATE NOT NULL,
+        created DATE NOT NULL UNIQUE,
         cardio INT,
         weights BOOLEAN,
         journal DOUBLE,
@@ -17,4 +18,11 @@ CREATE TABLE Tasks(
         sugar BOOLEAN,
         learned BOOLEAN,
         PRIMARY KEY (TaskID)
-)
+);
+
+CREATE TABLE Journals (
+        JournalID INT NOT NULL AUTO_INCREMENT,
+        Description TEXT NOT NULL,
+        created DATE NOT NULL UNIQUE,
+        PRIMARY KEY (JournalID)
+);

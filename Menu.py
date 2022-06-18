@@ -1,5 +1,8 @@
 from Todos import Todos 
+from Journals import Journals 
 from Tasks import Tasks
+import os
+import signal
 
 
 class Menu(Todos):
@@ -8,17 +11,37 @@ class Menu(Todos):
 
         def main_menu(self):
 #         ## What would you like to do?
-#         * Todos Menu
-#         * Log Daily Tasks
-#         * Generate Reports
-                pass
+                
+                print("Loading Productivity App")
+
+                print('Welcome to Your Productivity App\n')
+                print("""
+                1.) Todos
+                2.) Tasks
+                3.) Journal
+                4.) Metrics
+                5.) Quit
+                """)
+
+                main_menu_choice = int(input("What would you like to do today?  >> "))
+                if main_menu_choice == 1:
+                        print('Retrieving Todos Menu')
+                        self.show_todos_menu()
+                elif main_menu_choice == 2:
+                        self.show_log_tasks_menu()
+                elif main_menu_choice == 3:
+                        self.show_journal_menu()
+                elif main_menu_choice == 4:
+                        self.generate_reports_menu()
+                elif main_menu_choice == 5:
+                        self.quit_menu()
                 
 
         def show_todos_menu(self):      
                 todo = Todos()
                 usr = int(input('''Hello, what can I help you with?
         1.) See all todos
-        2.) Write todos toa text file
+        2.) Write todos to a text file
         3.) Create todo
         4.) Delete todo
         \t\n >>'''))
@@ -73,7 +96,29 @@ class Menu(Todos):
                          task_dict['learned'] = False
                 task.create_task(**task_dict)
 
-                
+
+
+        def show_Journals_menu(self):      
+                journal = Journals()
+                usr = int(input('''Hello, what can I help you with?
+        1.) See all Journals
+        2.) Write Journals to a text file
+        3.) Create journal
+        4.) Delete journal
+        \t\n >>'''))
+                        
+                if usr == 1:
+                        journal.get_Journals_all()
+                elif usr == 2:
+                        file_name = input("Please enter a filename >>")
+                        journal.export_Journals(file_name)
+                elif usr == 3:
+                        description  = input("Please enter a description >>")
+                        journal.create_journal(description)
+                elif usr == 4:
+                        journal.get_Journals_all()
+                        journal_id = input("Please enter the Journal id you wish to delete >> ")
+                        journal.delete_journal(journal_id)
 
 
         def generate_reports_menu(self):
@@ -88,5 +133,5 @@ class Menu(Todos):
 
         # The user can type quit to exit the program
         def quit_menu(self):
-                pass
+                return os.kill(os.getppid(), signal.SIGHUP)
 

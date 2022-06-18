@@ -5,5 +5,6 @@ from Tasks import Tasks
 
 menu = Menu()
 # menu.show_log_tasks_menu()
-menu.show_todos_menu()
+while True:
+        menu.main_menu()
 
