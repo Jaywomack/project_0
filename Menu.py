@@ -6,15 +6,28 @@ import os
 import signal
 
 class Menu(Todos):
-        '''Menu Class'''
+        '''Menu Class
+        methods:
+        main_menu()
+        show_todos_menu()
+        show_log_tasks_menu()
+        show_journals_menu()
+        quit_menu()
+        '''
 
         def main_menu(self):
+                '''main_menu - receives user input and calls one of these functions depending on user input:
+                show_todos_menu,
+                show_log_tasks_menu,
+                show_journals_menu,
+                quit_menu.'''
+
                 print('Welcome to Your Productivity App\n')
                 print("""
-                1.) Todos
-                2.) Tasks
-                3.) Journal
-                4.) Quit
+        1.) Todos
+        2.) Tasks
+        3.) Journal
+        4.) Quit
                 """)
 
                 main_menu_choice = int(input("What would you like to do today?  >> "))
@@ -29,7 +42,15 @@ class Menu(Todos):
                         self.quit_menu()
                 
 
-        def show_todos_menu(self):      
+        def show_todos_menu(self):    
+                '''show_todos_menu - recieves user input and calls one of these functions depending on user input:
+                create_todo,
+                get_all_todos,
+                get_todo_by_id,
+                update_todo,
+                delete_todo,
+                quit_menu.'''
+
                 todo = Todos()
                 usr = int(input('''Hello, what can I help you with?
         1.) See all todos
@@ -54,6 +75,13 @@ class Menu(Todos):
 
 
         def show_log_tasks_menu(self):
+                '''show_log_tasks_menu - recieves user input and calls one of these functions depending on user input:
+                create_task,
+                get_all_tasks,
+                ingest_task_data,
+                export_tasks.
+                '''
+
                 task = Tasks()
                 task_input = int(input('''Hello, what can I help you with?
         1.) Log Daily Tasks
@@ -107,7 +135,12 @@ class Menu(Todos):
                         input("Hit ENTER")
 
 
-        def show_journals_menu(self):      
+        def show_journals_menu(self): 
+                '''show_journals_menu - recieves user input and calls one of these functions depending on user input:
+                get_journals_all,
+                export_all_journals,
+                create_journal,
+                delete_journal,'''     
                 journal = Journals()
                 usr = int(input('''Hello, what can I help you with?
         1.) See all Journals
@@ -132,5 +165,6 @@ class Menu(Todos):
 
 
         def quit_menu(self):
+                '''closes connection and kills terminal'''
                 connection.close()
                 return os.kill(os.getppid(), signal.SIGHUP)
