@@ -147,6 +147,7 @@ class Menu(Todos):
         2.) Write Journals to a text file
         3.) Create journal
         4.) Delete journal
+        5.) Update journal
         \t\n >>'''))
                         
                 if usr == 1:
@@ -162,6 +163,8 @@ class Menu(Todos):
                         journal.get_journals_all()
                         journal_id = input("Please enter the Journal id you wish to delete >> ")
                         journal.delete_journal(journal_id)
+                elif usr == 5:
+                        journal.update_journal()
 
 
         def quit_menu(self):

@@ -6,7 +6,6 @@ from tabulate import tabulate
 class Journals():
         '''journal Class'''
 
-        # create a journal
         def create_journal(self, description):
 
                 try:
@@ -20,6 +19,20 @@ class Journals():
                 except pymysql.Error  as e:
                         print(f"There was an error creating user: {e}")
 
+
+        def update_journal(self):
+                try:
+                        with connection.cursor() as cursor:
+                                self.get_journals_all()
+                                journal_id = input("Enter the journal ID you want to update: >> ")
+                                description = input("Enter the new description: >> ")
+                                sql = 'UPDATE Journals SET DESCRIPTION = %s WHERE JOURNALID = %s'
+                                cursor.execute(sql, (description, journal_id))
+                                connection.commit()
+                                print(f"journal {journal_id} has been updated.")
+
+                except pymysql.Error as e:
+                        print(f"There was an error updating the Journal {e}")
 
         def get_journals_all(self):
                 try:
