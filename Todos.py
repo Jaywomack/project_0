@@ -8,7 +8,7 @@ class Todos():
 
         # create a todo
         def create_todo(self, description):
-
+                '''Function that creates a new todo from user input and persists it to the database'''
                 try:
                         with connection.cursor() as cursor:
                                 sql = 'INSERT INTO Todos ( Description, created) VALUES (%s,%s)'
@@ -20,8 +20,9 @@ class Todos():
                 except pymysql.Error  as e:
                         print(f"There was an error creating user: {e}")
 
-        #  Get all todos, completed, in progress and todos
+
         def get_todos_all(self):
+                '''Function that returns all todos in the database'''
                 try:
                         with connection.cursor() as cursor:
                                 sql = 'SELECT * FROM Todos'
@@ -33,8 +34,9 @@ class Todos():
                         print(f'There was an error retrieving your request. {e}')
                 
 
-        # Export todos to 
+
         def export_todos(self, name_file):
+                '''Function that exports all todos to a csv file'''
                 try:
                         with connection.cursor() as cursor:
                                 sql = 'SELECT * FROM Todos'
@@ -47,6 +49,7 @@ class Todos():
 
 
         def delete_todo(self, todo_id):
+                '''Function that deletes a todo from the database based on the todo ID input by the user'''
                 try:
                         with connection.cursor() as cursor:
                                 sql = 'DELETE FROM Todos WHERE TodoID = %s'

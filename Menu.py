@@ -54,7 +54,7 @@ class Menu(Todos):
                 todo = Todos()
                 usr = int(input('''Hello, what can I help you with?
         1.) See all todos
-        2.) Write todos to a text file
+        2.) Export todos to a text file
         3.) Create todo
         4.) Delete todo
         \t\n >>'''))
@@ -89,7 +89,7 @@ class Menu(Todos):
         3.) Ingest Tasks Data From Excel File
         4.) Export Tasks Data to .csv
 
-        \t\n >>'''))
+        \t\n >> '''))
                 if task_input == 1:
                         task_dict = {'cardio':0,'weights':False,'journal':0.1,'writing':0.1,'water':1,'whole_foods':False,'sugar':True,'learned':False}
 
@@ -140,7 +140,9 @@ class Menu(Todos):
                 get_journals_all,
                 export_all_journals,
                 create_journal,
-                delete_journal,'''     
+                delete_journal,
+                update_journal'''
+
                 journal = Journals()
                 usr = int(input('''Hello, what can I help you with?
         1.) See all Journals

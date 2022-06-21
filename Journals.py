@@ -7,7 +7,7 @@ class Journals():
         '''journal Class'''
 
         def create_journal(self, description):
-
+                '''Function that creates a new journal from user input and persists it to the database'''
                 try:
                         with connection.cursor() as cursor:
                                 sql = 'INSERT INTO Journals ( Description, created) VALUES (%s,%s)'
@@ -21,6 +21,7 @@ class Journals():
 
 
         def update_journal(self):
+                '''Function that updates a journal from user input and persists it to the database'''
                 try:
                         with connection.cursor() as cursor:
                                 self.get_journals_all()
@@ -35,6 +36,7 @@ class Journals():
                         print(f"There was an error updating the Journal {e}")
 
         def get_journals_all(self):
+                '''Function that returns all journals in the database'''
                 try:
                         with connection.cursor() as cursor:
                                 sql = 'SELECT * FROM Journals'
@@ -47,6 +49,7 @@ class Journals():
                 
 
         def export_all_journals(self, name_file):
+                '''Function that exports all journals to a csv file'''
                 try:
                         with connection.cursor() as cursor:
                                 sql = 'SELECT * FROM Journals'
@@ -59,6 +62,7 @@ class Journals():
 
 
         def delete_journal(self, journal_id):
+                '''Function that deletes a journal from the database based on the journal ID input by the user'''
                 try:
                         with connection.cursor() as cursor:
                                 sql = 'DELETE FROM Journals WHERE JournalID = %s'

@@ -8,6 +8,7 @@ from sqlalchemy import create_engine
 class Tasks:
         
         def export_tasks(self):
+                '''Function that exports tasks to a csv file'''
                 try:
                         with connection:
                                 name_file = input('What would you like to name your file?')
@@ -19,6 +20,7 @@ class Tasks:
                         print(e)
 
         def ingest_task_data(self):
+                '''Function that imports tasks from a csv file into the database'''
                 try:
                         xl_file = pd.ExcelFile('./task_sheet.xlsx')
                         xl_df = xl_file.parse(sheet_name='task_log')
@@ -32,6 +34,7 @@ class Tasks:
                         print(e)
 
         def create_task(self,cardio,weights,journal,writing,water,whole_foods,sugar,learned):
+                '''Function that creates a new task from user input and persists it to the database'''
                 try:
                         with connection.cursor() as cursor:
                                 sql = 'INSERT INTO Tasks(created,cardio,weights,journal,writing,water,whole_foods,sugar,learned) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)'
@@ -43,6 +46,7 @@ class Tasks:
                         print(f"Error creating task {e}")
 
         def get_all_tasks(self):
+                '''Function that returns all tasks in the database'''
                 try:
                         with connection.cursor() as cursor:
                                 lookback = int(input("How many days would you like to lookback?"))
@@ -54,6 +58,8 @@ class Tasks:
                         print(f"There was an error getting your tasks {e}")
 
         def delete_task(self):
+                '''Function that deletes a task from the database based on the task id based on input from the user'''
+                
                 task_to_delete = input("Please enter a task number for which task you would like to delete > ")
                 try:
                         with connection.cursor() as cursor:
@@ -64,3 +70,4 @@ class Tasks:
 
                 except pymysql.Error as e:
                         print(f"There was am error deleting the task {e}")
+
