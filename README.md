@@ -1,5 +1,23 @@
 # Revature Project Zero - Jay Womack
 
+## To run project:
+
+### Create a virtual environement by:
+
+> python3 -m venv /path/to/new/virtual/environment
+
+### Activate venv by running this command in terminal:
+
+> source <path_to_venv>/bin/activate
+
+### Install required packages:
+
+> pip install -r requirements.txt
+
+### Run program
+
+> run main.py
+
 &nbsp;
 
 # Python&nbsp; | &nbsp; MySQL&nbsp; | &nbsp;CLI Productivity App
